@@ -1,14 +1,102 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/ctz)](https://api.reuse.software/info/github.com/SAP/ctz)
 
-# ctz
+# Containerise Build Tool
 
 ## About this project
 
 Build tool to containerise cloud applications.
 
-## Requirements and Setup
+## Requirements
 
-*Insert a short description what is required to get your project running...*
+- [Docker](https://www.docker.com/get-started/)
+- [Pack CLI (Only if you're using `buildpack` configuration)](https://buildpacks.io/docs/for-platform-operators/how-to/integrate-ci/pack/)
+
+## Setup
+
+## Usage
+
+```bash
+  Usage: ctz <filename> <options>
+
+  Options:
+
+    -p, --push           pushes image to specified repository
+    -l, --log            logs the standard output
+    -h, --help           get detailed usage information
+```
+
+## Examples
+
+```bash
+  ctz build.yaml
+  ctz build.yaml --log
+  ctz build.yaml -l
+  ctz build.yaml --push
+  ctz build.yaml -p --log
+```
+
+## Configuration
+
+The following fields are allowed in the YAML file.
+
+|        Field      |      Description                                             |
+|-------------------|--------------------------------------------------------------|
+| *_schema-version* | schema version of the containerise yaml file.                |
+| *repository*      | registry where your images/modules will be pushed.           |
+| tag               | global tag used for all images/modules.                      |
+| before-all        | list of commands to execute before building images/modules.  |
+| *modules*         | list of modules.                                             |
+
+### Configuration of modules
+
+There are three ways to configure how to containerise a module:
+
+1. `buildpack`: Cloud Native buildpacks to containerise a module.
+    
+    Example:
+      ```yaml
+      modules:
+      - name: bookshop-srv
+        build-parameters:
+          buildpack:
+            type: nodejs
+            builder: builder-jammy-base
+            path: gen/srv
+            env:
+              BP_NODE_RUN_SCRIPTS: ""
+      ```
+
+    type: Mention the buildpack(s) (comma-separated if multiple).    
+    builder: Specify the builder type.
+    path: Path of the module to be containerized.
+    env: Environment variables (key-value pairs).
+
+    `Note:`: `pack` CLI tool is required for this option. 
+
+2. `dockerfile`: Dockerfile provided by the user is used.
+
+    Example:
+    ```yaml
+    modules:
+    - name: bookshop-srv
+      build-parameters:
+        dockerfile: <path to a docker file>
+    ```
+
+3. `commands`: List of commands provided by the user are executed to build the image.
+
+    Example:
+    ```yaml
+    modules:
+    - name: bookshop-srv
+      build-parameters:
+        commands:
+        - command 1
+        - command 2
+        - command 3
+    ```
+
+    `Note`: These commands are executed as is without any validation.
 
 ## Support, Feedback, Contributing
 

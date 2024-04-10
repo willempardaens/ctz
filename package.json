@@ -1,0 +1,24 @@
+{
+  "name": "ctz",
+  "version": "0.1.0",
+  "description": "",
+  "preferGlobal": true,
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "scripts": {
+    "test": "npx jest --silent"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "bin": "./index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

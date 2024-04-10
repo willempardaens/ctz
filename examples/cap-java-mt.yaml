@@ -1,0 +1,32 @@
+_schema-version: '1.0'
+repository: <your-container-registry>
+tag: latest
+before-all:
+  - npx cds build --production
+modules:
+  - name: bookshop-srv
+    build-parameters:
+      buildpack:
+        type: sap-machine, java
+        builder: builder-jammy-base
+        path: .
+        env:
+          SPRING_PROFILES_ACTIVE: cloud
+          BP_JVM_VERSION: 17
+          BP_MAVEN_BUILT_ARTIFACT: srv/target/bookshop-exec.jar
+  - name: bookshop-approuter
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: app/router
+        env:
+          BP_NODE_RUN_SCRIPTS: ""
+  - name: bookshop-sidecar
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: mtx/sidecar/gen
+        env:
+          BP_NODE_RUN_SCRIPTS: ""
