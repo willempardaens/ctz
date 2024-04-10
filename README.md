@@ -66,10 +66,26 @@ There are three ways to configure how to containerise a module:
               BP_NODE_RUN_SCRIPTS: ""
       ```
 
-    type: Mention the buildpack(s) (comma-separated if multiple).    
-    builder: Specify the builder type.
-    path: Path of the module to be containerized.
-    env: Environment variables (key-value pairs).
+    **type**: Mention the buildpack(s) (comma-separated if multiple).  
+    There are certain keywords which when mentioned in `type` key of buildpack which are parsed as:
+
+    |        Keyword    |      Parsed to                                               |
+    |-------------------|--------------------------------------------------------------|
+    | *nodejs*          | gcr.io/paketo-buildpacks/nodejs                              |
+    | *java*            | gcr.io/paketo-buildpacks/java                                |
+    | *sap-machine*     | gcr.io/paketo-buildpacks/sap-machine                         |
+
+    **builder**: Specify the builder type.  
+    There are certain keywords which when mentioned in `builder` key of buildpack which are parsed as:
+
+    |     Keyword       |      Parsed to                                               |
+    |-------------------|--------------------------------------------------------------|
+    | *builder-jammy-base* | paketobuildpacks/builder-jammy-base                       |
+    | *builder-jammy-full* | paketobuildpacks/builder-jammy-full                       |
+
+
+    **path**: Path of the module to be containerized.
+    **env**: Environment variables (key-value pairs).
 
     `Note:`: `pack` CLI tool is required for this option. 
 
