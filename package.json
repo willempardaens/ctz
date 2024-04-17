@@ -1,12 +1,18 @@
 {
   "name": "ctz",
   "version": "0.1.0",
-  "description": "",
-  "preferGlobal": true,
+  "description": "Build tool to containerise cloud applications",
+  "homepage": "https://github.com/SAP/ctz",
+  "keywords": [
+    "ctz",
+    "Containerise Build Tool"
+  ],
   "main": "index.js",
   "files": [
     "index.js",
-    "lib"
+    "lib/",
+    "npm-shrinkwrap.json",
+    "LICENSE"
   ],
   "scripts": {
     "test": "npx jest --silent"
@@ -15,10 +21,10 @@
     "js-yaml": "^4.1.0"
   },
   "bin": "./index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "SAP SE (https://www.sap.com)",
+  "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "jest": "^29.7.0"
-  }
+  },
+  "_hasShrinkwrap": true
 }
