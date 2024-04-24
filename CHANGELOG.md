@@ -3,7 +3,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Version 0.1.1 - tbd
+## Version 0.1.1 - 2024-04-25
 
 ### Fixed
 
