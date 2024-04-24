@@ -1,6 +1,6 @@
 {
   "name": "ctz",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build tool to containerise cloud applications",
   "homepage": "https://github.com/SAP/ctz",
   "keywords": [
