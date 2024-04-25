@@ -1,10 +1,10 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/ctz)](https://api.reuse.software/info/github.com/SAP/ctz)
 
-# Containerise Build Tool
+# Containerize Build Tool
 
 ## About this project
 
-Build tool to containerise cloud applications.
+Build tool to containerize cloud applications.
 
 ## Requirements
 
@@ -41,7 +41,7 @@ The following fields are allowed in the YAML file.
 
 |        Field      |      Description                                             |
 |-------------------|--------------------------------------------------------------|
-| *_schema-version* | schema version of the containerise yaml file.                |
+| *_schema-version* | schema version of the containerize yaml file.                |
 | *repository*      | registry where your images/modules will be pushed.           |
 | tag               | global tag used for all images/modules.                      |
 | before-all        | list of commands to execute before building images/modules.  |
@@ -49,9 +49,9 @@ The following fields are allowed in the YAML file.
 
 ### Configuration of modules
 
-There are three ways to configure how to containerise a module:
+There are three ways to configure how to containerize a module:
 
-1. `buildpack`: Cloud Native buildpacks to containerise a module.
+1. `buildpack`: Cloud Native buildpacks to containerize a module.
     
     Example:
       ```yaml
