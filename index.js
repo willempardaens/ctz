@@ -5,10 +5,10 @@ const { processModule } = require('./lib/execute')
 
 const shortcuts = {
     h: "--help",
-    v: "--version"
+    v: 'version', '-v':'version', '--version':'version'
 }
 
-const cmd = process.argv[2]
+let cmd = process.argv[2]
 if (cmd in shortcuts) {
     cmd = shortcuts[cmd]
 }

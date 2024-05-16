@@ -16,23 +16,22 @@ Build tool to containerize cloud applications.
 ## Usage
 
 ```bash
-  Usage: ctz <filename> <options>
+ USAGE
+     ctz = ctz help
+     ctz <filename> <options> = builds images of all modules and pushes them to remote repository
+    
+ OPTIONS
+     -l |  --log       logs the standard output in the console
+     -p |  --push      pushes the images to specified repository
+     -h |  --help      get detailed usage information
+     -v |  --version   get version of the package
 
-  Options:
-
-    -p, --push           pushes image to specified repository
-    -l, --log            logs the standard output
-    -h, --help           get detailed usage information
-```
-
-## Examples
-
-```bash
-  ctz build.yaml
-  ctz build.yaml --log
-  ctz build.yaml -l
-  ctz build.yaml --push
-  ctz build.yaml -p --log
+ EXAMPLES
+    ctz build.yaml
+    ctz build.yaml --log
+    ctz build.yaml -l
+    ctz build.yaml --push
+    ctz build.yaml -p --log
 ```
 
 ## Configuration
@@ -92,9 +91,9 @@ There are three ways to configure how to containerize a module:
     |     Keyword                        |      Parsed to                                            |
     |------------------------------------|-----------------------------------------------------------|
     | *builder-jammy-base*               | paketobuildpacks/builder-jammy-base                       |
-    | *builder-jammy-buildpackless-base* | paketobuildpacks/builder-jammy-full                       |
-    | *builder-jammy-full*               | paketobuildpacks/builder-jammy-base                       |
-    | *builder-jammy-buildpackless-full* | paketobuildpacks/builder-jammy-full                       |
+    | *builder-jammy-buildpackless-base* | paketobuildpacks/builder-jammy-buildpackless-base         |
+    | *builder-jammy-full*               | paketobuildpacks/builder-jammy-full                       |
+    | *builder-jammy-buildpackless-full* | paketobuildpacks/builder-jammy-buildpackless-full         |
 
     </br>
 
