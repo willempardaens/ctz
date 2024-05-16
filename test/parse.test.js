@@ -1,11 +1,27 @@
-const { desired_output } = require('./expected')
 const { parse_yaml } = require('../lib/parse_yaml')
+const fs = require('fs')
+
+function readJSON(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+}
 
 describe('parse yaml', () => {
   test('test yaml parsing', () => {
-    expect(parse_yaml("/test/build.yaml")).toEqual(desired_output)
-  });
-});
+    expect(parse_yaml("/test/files/build.yaml")).toEqual(readJSON(__dirname + "/expected/build.json"))
+  })
+})
+
+describe('parse yaml without builder', () => {
+  test('test yaml parsing without builder', () => {
+    expect(parse_yaml("/test/files/buildWithoutBuilder.yaml")).toEqual(readJSON(__dirname + "/expected/buildWithoutBuilder.json"))
+  })
+})
+
+describe('parse yaml without type', () => {
+  test('test yaml parsing without buildpack/type', () => {
+    expect(parse_yaml("/test/files/buildWithoutType.yaml")).toEqual(readJSON(__dirname + "/expected/buildWithoutType.json"))
+  })
+})
 
 describe('File not found error handling', () => {
   test('throw on file not found', () => {
