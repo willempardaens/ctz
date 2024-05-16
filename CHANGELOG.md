@@ -3,6 +3,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 0.2.1 - 2024-05-16
+
+### Fixed
+
+- Documentation fixes.
+
 ## Version 0.2.0 - 2024-05-16
 
 ### Fixed
